@@ -21,9 +21,9 @@ function AINode({ position, color, delay = 0 }: { position: [number, number, num
         <meshStandardMaterial 
           color={color} 
           emissive={color} 
-          emissiveIntensity={0.2}
-          roughness={0.3}
-          metalness={0.7}
+          emissiveIntensity={0.3}
+          roughness={0.2}
+          metalness={0.8}
         />
       </mesh>
     </Float>
@@ -41,11 +41,11 @@ function AIScene() {
   });
 
   const aiNodes = useMemo(() => [
-    { position: [-3, 2, 0] as [number, number, number], color: "#0066FF", delay: 0 },
-    { position: [3, -1, 1] as [number, number, number], color: "#00DDFF", delay: 1 },
-    { position: [0, 3, -2] as [number, number, number], color: "#4488FF", delay: 2 },
-    { position: [-2, -2, 2] as [number, number, number], color: "#2266DD", delay: 3 },
-    { position: [4, 1, -1] as [number, number, number], color: "#6699FF", delay: 4 },
+    { position: [-3, 2, 0] as [number, number, number], color: "#15621B", delay: 0 },     // Official brand green
+    { position: [3, -1, 1] as [number, number, number], color: "#2A8B2F", delay: 1 },    // Lighter brand green
+    { position: [0, 3, -2] as [number, number, number], color: "#0F4515", delay: 2 },    // Darker brand green
+    { position: [-2, -2, 2] as [number, number, number], color: "#1A6B1F", delay: 3 },  // Mid brand green
+    { position: [4, 1, -1] as [number, number, number], color: "#238528", delay: 4 },   // Variant green
   ], []);
 
   return (
@@ -58,26 +58,26 @@ function AIScene() {
       <Float speed={2} rotationIntensity={2} floatIntensity={1}>
         <Torus args={[1.5, 0.3, 16, 100]} position={[0, 0, 0]}>
           <meshStandardMaterial 
-            color="#0066FF" 
-            emissive="#0066FF" 
-            emissiveIntensity={0.3}
+            color="#15621B"
+            emissive="#15621B" 
+            emissiveIntensity={0.4}
             transparent
             opacity={0.8}
-            roughness={0.2}
-            metalness={0.8}
+            roughness={0.1}
+            metalness={0.9}
           />
         </Torus>
       </Float>
 
       {/* Ambient particles */}
       <Sphere args={[0.1]} position={[5, 3, 2]}>
-        <meshBasicMaterial color="#00DDFF" transparent opacity={0.6} />
+        <meshBasicMaterial color="#2A8B2F" transparent opacity={0.6} />
       </Sphere>
       <Sphere args={[0.15]} position={[-4, -3, 1]}>
-        <meshBasicMaterial color="#4488FF" transparent opacity={0.5} />
+        <meshBasicMaterial color="#1A6B1F" transparent opacity={0.5} />
       </Sphere>
       <Sphere args={[0.08]} position={[2, 4, -3]}>
-        <meshBasicMaterial color="#6699FF" transparent opacity={0.7} />
+        <meshBasicMaterial color="#238528" transparent opacity={0.7} />
       </Sphere>
     </group>
   );
@@ -93,8 +93,8 @@ export default function Hero3D() {
         gl={{ antialias: true, alpha: true }}
       >
         <ambientLight intensity={0.4} />
-        <pointLight position={[10, 10, 10]} intensity={1} color="#0066FF" />
-        <pointLight position={[-10, -10, -10]} intensity={0.5} color="#00DDFF" />
+        <pointLight position={[10, 10, 10]} intensity={1} color="#15621B" />
+        <pointLight position={[-10, -10, -10]} intensity={0.5} color="#2A8B2F" />
         
         <Environment preset="night" />
         

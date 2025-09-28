@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
-import bokleAiLogo from '@/assets/bokle-ai-logo.png';
+import bokleLogoWithText from '@/assets/bokle-logo-with-text.png';
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,9 +18,9 @@ export default function Navigation() {
           {/* Logo */}
           <div className="flex items-center gap-3">
             <img 
-              src={bokleAiLogo} 
+              src={bokleLogoWithText} 
               alt="Bokle AI" 
-              className="h-8 filter drop-shadow-lg"
+              className="h-6 filter drop-shadow-lg"
             />
           </div>
           

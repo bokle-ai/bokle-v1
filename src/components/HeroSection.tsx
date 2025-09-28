@@ -1,7 +1,8 @@
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import Hero3D from './Hero3D';
-import bokleAiLogo from '@/assets/bokle-ai-logo.png';
+import bokleLogoWithText from '@/assets/bokle-logo-with-text.png';
+import bokleMascot from '@/assets/bokle-mascot.png';
 
 export default function HeroSection() {
   return (
@@ -25,12 +26,19 @@ export default function HeroSection() {
       <div className="relative z-10 container mx-auto px-6 text-center">
         <div className="max-w-4xl mx-auto">
           {/* Logo */}
-          <div className="mb-8 glide-in">
+          <div className="mb-8 glide-in flex items-center justify-center gap-4">
             <img 
-              src={bokleAiLogo} 
+              src={bokleLogoWithText} 
               alt="Bokle AI - Premium AI Marketplace" 
-              className="h-20 mx-auto mb-4 filter drop-shadow-2xl"
+              className="h-16 filter drop-shadow-2xl"
             />
+            <div className="floating-element">
+              <img 
+                src={bokleMascot}
+                alt="Bokle - Sugar Glider Mascot"
+                className="h-20 filter drop-shadow-lg"
+              />
+            </div>
           </div>
           
           {/* Main headline */}

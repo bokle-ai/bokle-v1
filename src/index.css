@@ -6,24 +6,24 @@
 
 @layer base {
   :root {
-    /* Premium AI/Tech Color Palette */
+    /* Official Bokle AI Brand Colors */
     --background: 222 84% 4.9%;
     --foreground: 210 40% 98%;
     
-    /* Primary Brand Colors - Deep Tech Blue */
-    --primary: 219 78% 11%;
+    /* Primary Brand Colors - Dark Green from brand guidelines */
+    --primary: 126 65% 23%;        /* #15621B converted to HSL */
     --primary-foreground: 210 40% 98%;
-    --primary-glow: 219 100% 50%;
+    --primary-glow: 126 100% 50%;  /* Brighter green for effects */
     
-    /* Secondary Brand Colors - Premium Teal */
-    --secondary: 189 43% 73%;
-    --secondary-foreground: 219 78% 11%;
-    --secondary-dark: 189 43% 23%;
+    /* Secondary Brand Colors - Official Greys */
+    --secondary: 42 35% 88%;       /* #FBEFD0 cream color */
+    --secondary-foreground: 0 0% 22%;  /* #373737 dark grey */
+    --secondary-dark: 0 0% 22%;    /* #373737 dark grey */
     
-    /* Accent Colors - Electric Blue */
-    --accent: 216 100% 50%;
+    /* Accent Colors - Complementary to brand green */
+    --accent: 126 65% 35%;         /* Lighter brand green */
     --accent-foreground: 210 40% 98%;
-    --accent-muted: 216 100% 15%;
+    --accent-muted: 126 65% 15%;   /* Darker brand green */
     
     /* Surface Colors */
     --card: 222 84% 6%;
@@ -42,18 +42,18 @@
     
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 216 100% 50%;
+    --ring: 126 65% 35%;
     
-    /* Premium Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(219 78% 11%) 0%, hsl(216 100% 50%) 100%);
-    --gradient-hero: linear-gradient(135deg, hsl(222 84% 4.9%) 0%, hsl(219 78% 11%) 50%, hsl(189 43% 23%) 100%);
+    /* Bokle AI Brand Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(126 65% 23%) 0%, hsl(126 65% 35%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(222 84% 4.9%) 0%, hsl(126 65% 15%) 50%, hsl(126 65% 23%) 100%);
     --gradient-card: linear-gradient(145deg, hsl(222 84% 6%) 0%, hsl(217.2 32.6% 17.5%) 100%);
-    --gradient-glow: radial-gradient(circle at center, hsl(216 100% 50% / 0.3) 0%, transparent 70%);
+    --gradient-glow: radial-gradient(circle at center, hsl(126 65% 35% / 0.3) 0%, transparent 70%);
     
     /* Shadows & Effects */
-    --shadow-glow: 0 0 40px hsl(216 100% 50% / 0.3);
+    --shadow-glow: 0 0 40px hsl(126 65% 35% / 0.3);
     --shadow-card: 0 10px 30px -10px hsl(222 84% 4.9% / 0.5);
-    --shadow-premium: 0 25px 50px -12px hsl(216 100% 50% / 0.25);
+    --shadow-premium: 0 25px 50px -12px hsl(126 65% 35% / 0.25);
     
     /* Animation & Transitions */
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -108,7 +108,7 @@
 
   body {
     @apply bg-background text-foreground overflow-x-hidden;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-family: 'DM Sans', 'Inter', system-ui, -apple-system, sans-serif;
   }
   
   html {
@@ -119,7 +119,7 @@
 @layer components {
   /* Premium Interactive Elements */
   .glide-hover {
-    @apply transition-all duration-500 ease-out hover:scale-105 hover:shadow-[0_0_40px_hsl(216_100%_50%_/_0.3)];
+    @apply transition-all duration-500 ease-out hover:scale-105 hover:shadow-[0_0_40px_hsl(126_65%_35%_/_0.3)];
   }
   
   .glow-text {
@@ -160,10 +160,10 @@
   
   @keyframes pulse-glow {
     0%, 100% { 
-      box-shadow: 0 0 20px hsl(216 100% 50% / 0.3);
+      box-shadow: 0 0 20px hsl(126 65% 35% / 0.3);
     }
     50% { 
-      box-shadow: 0 0 40px hsl(216 100% 50% / 0.6);
+      box-shadow: 0 0 40px hsl(126 65% 35% / 0.6);
     }
   }
   
