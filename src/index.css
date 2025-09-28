@@ -2,41 +2,65 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Bokle AI Premium Design System - Modern Tech AI Aesthetic */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
+    /* Premium AI/Tech Color Palette */
+    --background: 222 84% 4.9%;
+    --foreground: 210 40% 98%;
+    
+    /* Primary Brand Colors - Deep Tech Blue */
+    --primary: 219 78% 11%;
     --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
+    --primary-glow: 219 100% 50%;
+    
+    /* Secondary Brand Colors - Premium Teal */
+    --secondary: 189 43% 73%;
+    --secondary-foreground: 219 78% 11%;
+    --secondary-dark: 189 43% 23%;
+    
+    /* Accent Colors - Electric Blue */
+    --accent: 216 100% 50%;
+    --accent-foreground: 210 40% 98%;
+    --accent-muted: 216 100% 15%;
+    
+    /* Surface Colors */
+    --card: 222 84% 6%;
+    --card-foreground: 210 40% 98%;
+    --card-border: 217.2 32.6% 17.5%;
+    
+    --popover: 222 84% 5%;
+    --popover-foreground: 210 40% 98%;
+    
+    /* Interactive Elements */
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
+    
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 216 100% 50%;
+    
+    /* Premium Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(219 78% 11%) 0%, hsl(216 100% 50%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(222 84% 4.9%) 0%, hsl(219 78% 11%) 50%, hsl(189 43% 23%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(222 84% 6%) 0%, hsl(217.2 32.6% 17.5%) 100%);
+    --gradient-glow: radial-gradient(circle at center, hsl(216 100% 50% / 0.3) 0%, transparent 70%);
+    
+    /* Shadows & Effects */
+    --shadow-glow: 0 0 40px hsl(216 100% 50% / 0.3);
+    --shadow-card: 0 10px 30px -10px hsl(222 84% 4.9% / 0.5);
+    --shadow-premium: 0 25px 50px -12px hsl(216 100% 50% / 0.25);
+    
+    /* Animation & Transitions */
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-glide: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
+    --radius: 1rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -55,34 +79,17 @@ All colors MUST be HSL.
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+  /* Light mode variant (optional - dark is primary) */
+  .light {
+    --background: 210 40% 98%;
+    --foreground: 222.2 84% 4.9%;
+    --primary: 219 78% 11%;
+    --primary-foreground: 210 40% 98%;
+    --card: 210 40% 98%;
+    --card-foreground: 222.2 84% 4.9%;
+    --border: 214.3 31.8% 91.4%;
+    --gradient-hero: linear-gradient(135deg, hsl(210 40% 98%) 0%, hsl(189 43% 93%) 50%, hsl(216 100% 95%) 100%);
+    
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -100,6 +107,68 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground overflow-x-hidden;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer components {
+  /* Premium Interactive Elements */
+  .glide-hover {
+    @apply transition-all duration-500 ease-out hover:scale-105 hover:shadow-[0_0_40px_hsl(216_100%_50%_/_0.3)];
+  }
+  
+  .glow-text {
+    @apply bg-gradient-to-r from-accent to-secondary bg-clip-text text-transparent;
+  }
+  
+  .premium-card {
+    @apply relative overflow-hidden rounded-2xl border border-card-border backdrop-blur-xl;
+    background: linear-gradient(145deg, hsl(222 84% 6%), hsl(217.2 32.6% 17.5%));
+  }
+  
+  .floating-element {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .glide-in {
+    animation: glideIn 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  }
+}
+
+@layer utilities {
+  /* Custom Keyframes */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(2deg); }
+  }
+  
+  @keyframes glideIn {
+    0% { 
+      opacity: 0; 
+      transform: translateY(30px) scale(0.95); 
+    }
+    100% { 
+      opacity: 1; 
+      transform: translateY(0px) scale(1); 
+    }
+  }
+  
+  @keyframes pulse-glow {
+    0%, 100% { 
+      box-shadow: 0 0 20px hsl(216 100% 50% / 0.3);
+    }
+    50% { 
+      box-shadow: 0 0 40px hsl(216 100% 50% / 0.6);
+    }
+  }
+  
+  @keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
   }
 }
