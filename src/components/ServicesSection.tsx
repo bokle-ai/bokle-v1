@@ -1,110 +1,126 @@
 import React from 'react';
 import { Button } from "@/components/ui/button";
-
-interface ServiceCardProps {
-  icon: string;
-  title: string;
-  description: string;
-  features: string[];
-  delay?: number;
-}
-
-function ServiceCard({ icon, title, description, features, delay = 0 }: ServiceCardProps) {
-  return (
-    <div 
-      className="premium-card p-8 glide-hover glide-in" 
-      style={{ animationDelay: `${delay}s` }}
-    >
-      <div className="text-6xl mb-6">{icon}</div>
-      <h3 className="text-2xl font-bold mb-4 glow-text">{title}</h3>
-      <p className="text-muted-foreground mb-6 leading-relaxed">{description}</p>
-      
-      <ul className="space-y-3 mb-8">
-        {features.map((feature, index) => (
-          <li key={index} className="flex items-start gap-3">
-            <div className="w-2 h-2 bg-accent rounded-full mt-2 flex-shrink-0" />
-            <span className="text-sm text-muted-foreground">{feature}</span>
-          </li>
-        ))}
-      </ul>
-      
-      <Button variant="outline" className="w-full">
-        Explore Solutions
-      </Button>
-    </div>
-  );
-}
+import { TrendingUp, ShoppingCart, Check } from "lucide-react";
 
 export default function ServicesSection() {
-  const salesMarketingFeatures = [
-    "AI Lead Scoring & Prospect Enrichment",
-    "24/7 Conversational AI Assistants", 
-    "Automated Email & Content Generation",
-    "Predictive Campaign Intelligence",
-    "Customer Segmentation & Churn Prediction",
-    "Real-time Sentiment Analysis"
-  ];
-
-  const ecommerceFeatures = [
-    "Automated Product Description Generation",
-    "AI Shopping Assistant Bots",
-    "Dynamic Pricing & Demand Forecasting", 
-    "Personalized Recommendation Engines",
-    "Review Intelligence & Sentiment Mining",
-    "Fraud Detection & Risk Management"
+  const services = [
+    {
+      icon: <TrendingUp className="w-12 h-12" />,
+      title: "Sales & Marketing AI",
+      description: "Revolutionize your sales and marketing operations with intelligent automation and predictive insights.",
+      features: [
+        "AI Lead Scoring & Prospect Enrichment",
+        "24/7 Conversational AI Assistants",
+        "Automated Email & Content Generation",
+        "Predictive Campaign Intelligence",
+        "Customer Segmentation & Churn Prediction",
+        "Real-time Sentiment Analysis"
+      ],
+      gradient: "from-primary via-accent to-primary-glow"
+    },
+    {
+      icon: <ShoppingCart className="w-12 h-12" />,
+      title: "Retail & E-Commerce AI",
+      description: "Transform your online business with AI-powered product intelligence and customer experience optimization.",
+      features: [
+        "Automated Product Description Generation",
+        "AI Shopping Assistant Bots",
+        "Dynamic Pricing & Demand Forecasting",
+        "Personalized Recommendation Engines",
+        "Review Intelligence & Sentiment Mining",
+        "Fraud Detection & Risk Management"
+      ],
+      gradient: "from-accent via-primary-glow to-accent"
+    }
   ];
 
   return (
-    <section className="py-24 px-6 relative overflow-hidden">
+    <section id="solutions" className="relative py-24 overflow-hidden">
       {/* Background elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-1/4 right-10 w-64 h-64 bg-gradient-glow rounded-full opacity-10 floating-element" />
-        <div className="absolute bottom-1/4 left-10 w-48 h-48 bg-gradient-glow rounded-full opacity-15 floating-element" style={{ animationDelay: '3s' }} />
-      </div>
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background" />
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
       
-      <div className="container mx-auto relative z-10">
-        {/* Section header */}
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 glide-in">
-            <span className="glow-text">Premium AI Solutions</span>
+      <div className="relative container mx-auto px-6">
+        {/* Section Header */}
+        <div className="text-center mb-16 glide-in">
+          <div className="inline-block px-4 py-2 rounded-full glass-card border border-primary/20 mb-6">
+            <span className="text-sm text-primary-glow font-semibold">💡 Specialized AI Solutions</span>
+          </div>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            <span className="glow-text">Purpose-Built</span> AI Agents
           </h2>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed glide-in" style={{ animationDelay: '0.2s' }}>
-            Specialized AI agents designed for high-impact business domains. 
-            Start with our MVP focus areas and scale across your organization.
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+            Deploy intelligent automation tailored for your industry. No coding required.
           </p>
         </div>
-        
-        {/* Service cards grid */}
-        <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-          <ServiceCard
-            icon="📈"
-            title="Sales & Marketing AI"
-            description="Revolutionize your sales and marketing operations with intelligent automation and predictive insights."
-            features={salesMarketingFeatures}
-            delay={0.4}
-          />
-          
-          <ServiceCard
-            icon="🛒"
-            title="Retail & E-Commerce AI"
-            description="Transform your online business with AI-powered product intelligence and customer experience optimization."
-            features={ecommerceFeatures}
-            delay={0.6}
-          />
+
+        {/* Services Grid */}
+        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          {services.map((service, index) => (
+            <div
+              key={index}
+              className="group relative glide-in glide-hover"
+              style={{ animationDelay: `${index * 0.2}s` }}
+            >
+              {/* Gradient border effect */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-20 group-hover:opacity-30 rounded-3xl blur-xl transition-all duration-500`} />
+              
+              {/* Card */}
+              <div className="relative glass-card-premium p-8 rounded-3xl border-2 border-primary/10 group-hover:border-primary/30 transition-all duration-500">
+                {/* Icon with gradient background */}
+                <div className={`inline-flex p-4 rounded-2xl bg-gradient-to-br ${service.gradient} mb-6 text-background shadow-glow`}>
+                  {service.icon}
+                </div>
+
+                {/* Title */}
+                <h3 className="text-3xl font-bold mb-4 glow-text">
+                  {service.title}
+                </h3>
+
+                {/* Description */}
+                <p className="text-muted-foreground mb-6 leading-relaxed">
+                  {service.description}
+                </p>
+
+                {/* Features List */}
+                <ul className="space-y-3 mb-8">
+                  {service.features.map((feature, idx) => (
+                    <li key={idx} className="flex items-start gap-3 group/item">
+                      <div className="mt-1 flex-shrink-0">
+                        <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center group-hover/item:bg-primary/30 transition-colors">
+                          <Check className="w-3 h-3 text-primary-glow" />
+                        </div>
+                      </div>
+                      <span className="text-muted-foreground group-hover/item:text-foreground transition-colors">
+                        {feature}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+
+                {/* CTA Button */}
+                <Button 
+                  variant="premium" 
+                  className="w-full group-hover:shadow-glow transition-all duration-300"
+                  size="lg"
+                >
+                  Explore Solutions
+                  <span className="ml-2 group-hover:translate-x-1 transition-transform">→</span>
+                </Button>
+              </div>
+            </div>
+          ))}
         </div>
-        
-        {/* Future expansion teaser */}
-        <div className="text-center mt-16">
-          <div className="premium-card p-8 max-w-4xl mx-auto glide-in" style={{ animationDelay: '0.8s' }}>
-            <h3 className="text-2xl font-bold mb-4 glow-text">Coming Soon</h3>
-            <p className="text-muted-foreground mb-6">
-              Expanding to Healthcare AI, Financial Services, HR & Talent Management, 
-              Supply Chain Optimization, and Customer Service Automation.
-            </p>
-            <Button variant="ghost" className="text-accent">
-              Join Waitlist for New Domains
-            </Button>
-          </div>
+
+        {/* Bottom CTA */}
+        <div className="text-center mt-16 glide-in" style={{ animationDelay: '0.6s' }}>
+          <p className="text-muted-foreground mb-4">
+            Can't find what you're looking for?
+          </p>
+          <Button variant="hero" size="lg">
+            Request Custom Solution
+          </Button>
         </div>
       </div>
     </section>
