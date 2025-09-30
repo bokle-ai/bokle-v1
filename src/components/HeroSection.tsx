@@ -21,20 +21,13 @@ export default function HeroSection() {
       {/* Main content */}
       <div className="relative z-10 container mx-auto px-6">
         <div className="max-w-7xl mx-auto">
-          {/* Header with logo and mascot */}
-          <div className="flex items-center justify-center gap-4 mb-12 glide-in">
+          {/* Header with logo */}
+          <div className="flex items-center justify-center mb-12 glide-in">
             <img 
               src={bokleLogoWithText} 
               alt="Bokle AI" 
               className="h-12 md:h-16 filter drop-shadow-2xl"
             />
-            <div className="floating-element">
-              <img 
-                src={bokleMascot}
-                alt="Bokle Mascot"
-                className="h-16 md:h-20 filter drop-shadow-[0_0_20px_rgba(21,98,27,0.6)]"
-              />
-            </div>
           </div>
           
           {/* Main headline */}
