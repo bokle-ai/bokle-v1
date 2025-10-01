@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
-import bokleLogo from '@/assets/image.png';
+import bokleTextLogo from '@/assets/bokle-text-logo.webp';
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -12,21 +12,21 @@ export default function Navigation() {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-2xl border-b border-green-600/30 shadow-[0_4px_20px_rgba(22,163,74,0.2)]">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/60 backdrop-blur-2xl border-b border-primary/20 shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
       {/* Subtle green glow at top */}
-      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-green-500/50 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-primary-glow/50 to-transparent" />
 
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center gap-3">
             <img
-              src={bokleLogo}
+              src={bokleTextLogo}
               alt="Bokle AI"
-              className="h-10 filter drop-shadow-[0_0_12px_rgba(22,163,74,0.4)] transition-all duration-300 hover:drop-shadow-[0_0_20px_rgba(34,197,94,0.6)]"
+              className="h-7 filter drop-shadow-[0_0_12px_rgba(22,163,74,0.4)] transition-all duration-300 hover:drop-shadow-[0_0_20px_rgba(22,163,74,0.6)]"
             />
           </div>
-          
+
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
             {navItems.map((item) => (
@@ -36,7 +36,7 @@ export default function Navigation() {
                 className="relative text-foreground/80 hover:text-foreground font-medium transition-all duration-300 group"
               >
                 {item.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-gradient-to-r from-green-600 to-green-400 group-hover:w-full transition-all duration-300" />
+                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-gradient-to-r from-primary to-accent group-hover:w-full transition-all duration-300" />
               </a>
             ))}
           </div>
@@ -46,14 +46,14 @@ export default function Navigation() {
             <Button
               variant="ghost"
               size="sm"
-              className="text-foreground/80 hover:text-foreground hover:bg-green-600/10 border border-transparent hover:border-green-600/30 transition-all duration-300"
+              className="text-foreground/80 hover:text-foreground hover:bg-primary/10 border border-transparent hover:border-primary/30 transition-all duration-300"
             >
               Sign In
             </Button>
             <Button
               variant="default"
               size="sm"
-              className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white font-semibold shadow-[0_0_20px_rgba(22,163,74,0.3)] hover:shadow-[0_0_30px_rgba(22,163,74,0.5)] transition-all duration-300"
+              className="bg-gradient-to-r from-primary to-accent hover:from-primary-glow hover:to-accent text-primary-foreground font-semibold shadow-glow hover:shadow-[0_0_30px_rgba(22,163,74,0.5)] transition-all duration-300"
             >
               Get Started
             </Button>
@@ -61,7 +61,7 @@ export default function Navigation() {
 
           {/* Mobile menu button */}
           <button
-            className="md:hidden p-2 text-foreground/80 hover:text-green-500 transition-all duration-300 hover:bg-green-600/10 rounded-lg"
+            className="md:hidden p-2 text-foreground/80 hover:text-primary-glow transition-all duration-300 hover:bg-primary/10 rounded-lg"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             <div className="w-6 h-6 flex flex-col justify-center space-y-1.5">
@@ -71,32 +71,32 @@ export default function Navigation() {
             </div>
           </button>
         </div>
-        
+
         {/* Mobile Navigation */}
         <div className={`md:hidden transition-all duration-300 overflow-hidden ${isMenuOpen ? 'max-h-80 mt-4' : 'max-h-0'}`}>
-          <div className="backdrop-blur-2xl bg-card/40 border border-green-600/20 rounded-2xl p-6 space-y-4 shadow-[0_0_20px_rgba(22,163,74,0.2)]">
+          <div className="backdrop-blur-2xl bg-card/40 border border-primary/20 rounded-2xl p-6 space-y-4 shadow-glow">
             {navItems.map((item) => (
               <a
                 key={item.label}
                 href={item.href}
-                className="block text-foreground/80 hover:text-foreground font-medium transition-all duration-300 hover:translate-x-2 hover:text-green-500"
+                className="block text-foreground/80 hover:text-foreground font-medium transition-all duration-300 hover:translate-x-2 hover:text-primary-glow"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.label}
               </a>
             ))}
-            <div className="pt-4 space-y-3 border-t border-green-600/20">
+            <div className="pt-4 space-y-3 border-t border-primary/20">
               <Button
                 variant="ghost"
                 size="sm"
-                className="w-full text-foreground/80 hover:text-foreground hover:bg-green-600/10 border border-transparent hover:border-green-600/30"
+                className="w-full text-foreground/80 hover:text-foreground hover:bg-primary/10 border border-transparent hover:border-primary/30"
               >
                 Sign In
               </Button>
               <Button
                 variant="default"
                 size="sm"
-                className="w-full bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white font-semibold shadow-[0_0_20px_rgba(22,163,74,0.3)]"
+                className="w-full bg-gradient-to-r from-primary to-accent hover:from-primary-glow hover:to-accent text-primary-foreground font-semibold shadow-glow"
               >
                 Get Started
               </Button>
