@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
-import bokleMascot from '@/assets/bokle-mascot.png';
+import bokleMascot from '@/assets/Bokle PL MAIN.png';
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
