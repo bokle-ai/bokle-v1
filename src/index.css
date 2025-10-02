@@ -6,54 +6,54 @@
 
 @layer base {
   :root {
-    /* Modern Tech Blue + Green Palette */
-    --background: 220 26% 8%;          /* Rich navy blue #0F1419 */
+    /* Official Bokle AI Brand Colors */
+    --background: 222 84% 4.9%;
     --foreground: 210 40% 98%;
     
-    /* Primary Brand Colors - Vibrant Green */
-    --primary: 142 76% 36%;            /* Modern bright green #16A34A */
-    --primary-foreground: 220 26% 8%;
-    --primary-glow: 142 76% 50%;       /* Brighter green for glow effects */
+    /* Primary Brand Colors - Dark Green from brand guidelines */
+    --primary: 126 65% 23%;        /* #15621B converted to HSL */
+    --primary-foreground: 210 40% 98%;
+    --primary-glow: 126 100% 50%;  /* Brighter green for effects */
     
-    /* Secondary Brand Colors - Deep Blues */
-    --secondary: 217 33% 17%;          /* Deep blue #1E293B */
-    --secondary-foreground: 210 40% 98%;
-    --secondary-dark: 222 47% 11%;     /* Darker blue #0F172A */
+    /* Secondary Brand Colors - Official Greys */
+    --secondary: 42 35% 88%;       /* #FBEFD0 cream color */
+    --secondary-foreground: 0 0% 22%;  /* #373737 dark grey */
+    --secondary-dark: 0 0% 22%;    /* #373737 dark grey */
     
-    /* Accent Colors - Bright Cyan/Teal */
-    --accent: 189 85% 56%;             /* Bright cyan #22D3EE */
-    --accent-foreground: 220 26% 8%;
-    --accent-muted: 189 85% 45%;       /* Darker cyan */
+    /* Accent Colors - Complementary to brand green */
+    --accent: 126 65% 35%;         /* Lighter brand green */
+    --accent-foreground: 210 40% 98%;
+    --accent-muted: 126 65% 15%;   /* Darker brand green */
     
     /* Surface Colors */
-    --card: 217 33% 12%;               /* Card background */
+    --card: 222 84% 6%;
     --card-foreground: 210 40% 98%;
-    --card-border: 217 33% 20%;
+    --card-border: 217.2 32.6% 17.5%;
     
-    --popover: 217 33% 12%;
+    --popover: 222 84% 5%;
     --popover-foreground: 210 40% 98%;
     
     /* Interactive Elements */
-    --muted: 217 33% 20%;
-    --muted-foreground: 215 16% 65%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
     
-    --destructive: 0 84% 60%;
+    --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
     
-    --border: 217 33% 20%;
-    --input: 217 33% 20%;
-    --ring: 142 76% 36%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 126 65% 35%;
     
-    /* Modern Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(142 76% 36%) 0%, hsl(142 76% 50%) 100%);
-    --gradient-hero: linear-gradient(135deg, hsl(220 26% 8%) 0%, hsl(217 33% 12%) 50%, hsl(142 76% 20%) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(217 33% 12%) 0%, hsl(217 33% 17%) 100%);
-    --gradient-glow: radial-gradient(circle at center, hsl(142 76% 50% / 0.2) 0%, transparent 70%);
+    /* Bokle AI Brand Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(126 65% 23%) 0%, hsl(126 65% 35%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(222 84% 4.9%) 0%, hsl(126 65% 15%) 50%, hsl(126 65% 23%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(222 84% 6%) 0%, hsl(217.2 32.6% 17.5%) 100%);
+    --gradient-glow: radial-gradient(circle at center, hsl(126 65% 35% / 0.3) 0%, transparent 70%);
     
     /* Shadows & Effects */
-    --shadow-glow: 0 0 40px hsl(142 76% 50% / 0.3);
-    --shadow-card: 0 10px 30px -10px hsl(220 26% 8% / 0.5);
-    --shadow-premium: 0 25px 50px -12px hsl(142 76% 50% / 0.25);
+    --shadow-glow: 0 0 40px hsl(126 65% 35% / 0.3);
+    --shadow-card: 0 10px 30px -10px hsl(222 84% 4.9% / 0.5);
+    --shadow-premium: 0 25px 50px -12px hsl(126 65% 35% / 0.25);
     
     /* Animation & Transitions */
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
