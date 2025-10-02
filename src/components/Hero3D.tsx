@@ -1,222 +1,162 @@
 import React, { useRef, useMemo } from 'react';
-import { Canvas, useFrame, useLoader } from '@react-three/fiber';
-import { Float, Sphere, Torus, OrbitControls, Environment, MeshDistortMaterial } from '@react-three/drei';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { Float, Sphere, OrbitControls, Environment, MeshDistortMaterial } from '@react-three/drei';
 import * as THREE from 'three';
 
-// 3D Sugar Glider Placeholder (geometric representation)
-function SugarGliderModel({ position }: { position: [number, number, number] }) {
-  const groupRef = useRef<THREE.Group>(null);
-  
-  useFrame((state) => {
-    if (groupRef.current) {
-      groupRef.current.rotation.y = Math.sin(state.clock.elapsedTime * 0.3) * 0.2;
-      groupRef.current.position.y = position[1] + Math.sin(state.clock.elapsedTime * 0.5) * 0.3;
-    }
-  });
-
-  return (
-    <Float speed={2} rotationIntensity={0.5} floatIntensity={1}>
-      <group ref={groupRef} position={position}>
-        {/* Body */}
-        <mesh position={[0, 0, 0]}>
-          <sphereGeometry args={[0.6, 32, 32]} />
-          <meshStandardMaterial 
-            color="#2A8B2F"
-            emissive="#15621B"
-            emissiveIntensity={0.3}
-            roughness={0.3}
-            metalness={0.7}
-          />
-        </mesh>
-        
-        {/* Head */}
-        <mesh position={[0, 0.6, 0.3]}>
-          <sphereGeometry args={[0.4, 32, 32]} />
-          <meshStandardMaterial 
-            color="#2A8B2F"
-            emissive="#15621B"
-            emissiveIntensity={0.3}
-            roughness={0.3}
-            metalness={0.7}
-          />
-        </mesh>
-        
-        {/* Gliding membranes - left */}
-        <mesh position={[-0.8, 0, 0]} rotation={[0, 0, 0.3]}>
-          <boxGeometry args={[1.2, 0.05, 0.8]} />
-          <meshStandardMaterial 
-            color="#238528"
-            emissive="#15621B"
-            emissiveIntensity={0.2}
-            transparent
-            opacity={0.8}
-            roughness={0.2}
-            metalness={0.9}
-          />
-        </mesh>
-        
-        {/* Gliding membranes - right */}
-        <mesh position={[0.8, 0, 0]} rotation={[0, 0, -0.3]}>
-          <boxGeometry args={[1.2, 0.05, 0.8]} />
-          <meshStandardMaterial 
-            color="#238528"
-            emissive="#15621B"
-            emissiveIntensity={0.2}
-            transparent
-            opacity={0.8}
-            roughness={0.2}
-            metalness={0.9}
-          />
-        </mesh>
-        
-        {/* Tail */}
-        <mesh position={[0, -0.3, -0.5]} rotation={[0.5, 0, 0]}>
-          <cylinderGeometry args={[0.1, 0.05, 0.8, 16]} />
-          <meshStandardMaterial 
-            color="#1A6B1F"
-            emissive="#15621B"
-            emissiveIntensity={0.2}
-            roughness={0.3}
-            metalness={0.7}
-          />
-        </mesh>
-      </group>
-    </Float>
-  );
-}
-
-// 3D AI Node Component
-function AINode({ position, color, delay = 0 }: { position: [number, number, number], color: string, delay?: number }) {
+function FlowingWave({ position, color, delay = 0 }: { position: [number, number, number], color: string, delay?: number }) {
   const meshRef = useRef<THREE.Mesh>(null);
-  
+
   useFrame((state) => {
     if (meshRef.current) {
-      meshRef.current.rotation.x = Math.sin(state.clock.elapsedTime + delay) * 0.3;
-      meshRef.current.rotation.y = state.clock.elapsedTime * 0.5 + delay;
+      meshRef.current.rotation.z = Math.sin(state.clock.elapsedTime * 0.5 + delay) * 0.3;
+      meshRef.current.position.y = position[1] + Math.sin(state.clock.elapsedTime + delay) * 0.5;
     }
   });
 
   return (
-    <Float speed={1.5} rotationIntensity={1} floatIntensity={2}>
+    <Float speed={2} rotationIntensity={0.3} floatIntensity={2}>
       <mesh ref={meshRef} position={position}>
-        <octahedronGeometry args={[0.5]} />
-        <meshStandardMaterial 
-          color={color} 
-          emissive={color} 
+        <torusGeometry args={[2, 0.4, 16, 100]} />
+        <MeshDistortMaterial
+          color={color}
+          emissive={color}
           emissiveIntensity={0.4}
+          distort={0.6}
+          speed={3}
           roughness={0.1}
           metalness={0.9}
+          transparent
+          opacity={0.7}
         />
       </mesh>
     </Float>
   );
 }
 
-// Floating AI Elements Scene
-function AIScene() {
-  const groupRef = useRef<THREE.Group>(null);
-  
+function OrganicBlob({ position, color, scale = 1, delay = 0 }: { position: [number, number, number], color: string, scale?: number, delay?: number }) {
+  const meshRef = useRef<THREE.Mesh>(null);
+
   useFrame((state) => {
-    if (groupRef.current) {
-      groupRef.current.rotation.y = state.clock.elapsedTime * 0.1;
+    if (meshRef.current) {
+      meshRef.current.rotation.x = state.clock.elapsedTime * 0.2 + delay;
+      meshRef.current.rotation.y = Math.sin(state.clock.elapsedTime * 0.3 + delay) * 0.5;
     }
   });
 
-  const aiNodes = useMemo(() => [
-    { position: [-3, 2, 0] as [number, number, number], color: "#15621B", delay: 0 },     // Official brand green
-    { position: [3, -1, 1] as [number, number, number], color: "#2A8B2F", delay: 1 },    // Lighter brand green
-    { position: [0, 3, -2] as [number, number, number], color: "#0F4515", delay: 2 },    // Darker brand green
-    { position: [-2, -2, 2] as [number, number, number], color: "#1A6B1F", delay: 3 },  // Mid brand green
-    { position: [4, 1, -1] as [number, number, number], color: "#238528", delay: 4 },   // Variant green
+  return (
+    <Float speed={1.5} rotationIntensity={0.5} floatIntensity={3}>
+      <mesh ref={meshRef} position={position} scale={scale}>
+        <icosahedronGeometry args={[1, 4]} />
+        <MeshDistortMaterial
+          color={color}
+          emissive={color}
+          emissiveIntensity={0.5}
+          distort={0.5}
+          speed={2}
+          roughness={0.0}
+          metalness={1}
+          transparent
+          opacity={0.8}
+        />
+      </mesh>
+    </Float>
+  );
+}
+
+function FlowingScene() {
+  const groupRef = useRef<THREE.Group>(null);
+
+  useFrame((state) => {
+    if (groupRef.current) {
+      groupRef.current.rotation.y = state.clock.elapsedTime * 0.05;
+    }
+  });
+
+  const organicElements = useMemo(() => [
+    { position: [-4, 1, -2] as [number, number, number], color: "#10b981", scale: 1.2, delay: 0 },
+    { position: [4, -1, -1] as [number, number, number], color: "#059669", scale: 1, delay: 1 },
+    { position: [0, 2, -3] as [number, number, number], color: "#34d399", scale: 0.8, delay: 2 },
+    { position: [-3, -2, 1] as [number, number, number], color: "#6ee7b7", scale: 1.1, delay: 3 },
+  ], []);
+
+  const waveElements = useMemo(() => [
+    { position: [0, 0, -4] as [number, number, number], color: "#10b981", delay: 0 },
+    { position: [0, 0, -2] as [number, number, number], color: "#059669", delay: 1.5 },
+    { position: [0, 0, 0] as [number, number, number], color: "#047857", delay: 3 },
   ], []);
 
   return (
     <group ref={groupRef}>
-      {/* 3D Mascot - Sugar Glider */}
-      <SugarGliderModel position={[-4, 1, 0]} />
-      
-      {aiNodes.map((node, index) => (
-        <AINode key={index} {...node} />
+      {waveElements.map((wave, index) => (
+        <FlowingWave key={`wave-${index}`} {...wave} />
       ))}
-      
-      {/* Central rotating ring */}
-      <Float speed={1.5} rotationIntensity={1.5} floatIntensity={1}>
-        <Torus args={[2, 0.15, 16, 100]} position={[0, 0, 0]}>
-          <meshStandardMaterial 
-            color="#15621B"
-            emissive="#15621B" 
-            emissiveIntensity={0.5}
-            transparent
-            opacity={0.6}
-            roughness={0.1}
-            metalness={0.9}
-          />
-        </Torus>
-      </Float>
 
-      {/* Distorted sphere - AI core */}
-      <mesh position={[0, 0, 0]}>
+      {organicElements.map((element, index) => (
+        <OrganicBlob key={`blob-${index}`} {...element} />
+      ))}
+
+      <mesh position={[0, 0, -1]} scale={2.5}>
         <sphereGeometry args={[1, 64, 64]} />
         <MeshDistortMaterial
-          color="#15621B"
-          emissive="#2A8B2F"
-          emissiveIntensity={0.3}
+          color="#10b981"
+          emissive="#059669"
+          emissiveIntensity={0.6}
           distort={0.4}
-          speed={2}
-          roughness={0.2}
-          metalness={0.8}
+          speed={1.5}
+          roughness={0}
+          metalness={1}
           transparent
-          opacity={0.5}
+          opacity={0.3}
         />
       </mesh>
 
-      {/* Ambient particles */}
-      <Sphere args={[0.12]} position={[5, 3, 2]}>
-        <meshBasicMaterial color="#2A8B2F" transparent opacity={0.7} />
-      </Sphere>
-      <Sphere args={[0.15]} position={[-5, -2, 1]}>
-        <meshBasicMaterial color="#1A6B1F" transparent opacity={0.6} />
-      </Sphere>
-      <Sphere args={[0.1]} position={[3, 4, -3]}>
-        <meshBasicMaterial color="#238528" transparent opacity={0.8} />
-      </Sphere>
-      <Sphere args={[0.08]} position={[-3, -4, -2]}>
-        <meshBasicMaterial color="#15621B" transparent opacity={0.5} />
-      </Sphere>
+      <Float speed={2} rotationIntensity={0.5} floatIntensity={2}>
+        <Sphere args={[0.15]} position={[6, 3, 2]}>
+          <meshStandardMaterial color="#34d399" emissive="#10b981" emissiveIntensity={0.8} transparent opacity={0.9} />
+        </Sphere>
+        <Sphere args={[0.2]} position={[-6, -2, 1]}>
+          <meshStandardMaterial color="#6ee7b7" emissive="#059669" emissiveIntensity={0.7} transparent opacity={0.8} />
+        </Sphere>
+        <Sphere args={[0.12]} position={[5, -3, -2]}>
+          <meshStandardMaterial color="#10b981" emissive="#047857" emissiveIntensity={0.9} transparent opacity={0.85} />
+        </Sphere>
+        <Sphere args={[0.18]} position={[-5, 4, -1]}>
+          <meshStandardMaterial color="#059669" emissive="#10b981" emissiveIntensity={0.6} transparent opacity={0.75} />
+        </Sphere>
+      </Float>
     </group>
   );
 }
 
-// Main Hero 3D Component
 export default function Hero3D() {
   return (
     <div className="w-full h-full relative">
       <Canvas
-        camera={{ position: [0, 0, 10], fov: 50 }}
+        camera={{ position: [0, 0, 12], fov: 45 }}
         className="w-full h-full"
         gl={{ antialias: true, alpha: true }}
       >
-        <ambientLight intensity={0.3} />
-        <pointLight position={[10, 10, 10]} intensity={1.5} color="#15621B" />
-        <pointLight position={[-10, -10, -10]} intensity={0.8} color="#2A8B2F" />
-        <pointLight position={[0, 10, 5]} intensity={1} color="#238528" />
-        
+        <ambientLight intensity={0.4} />
+        <pointLight position={[10, 10, 10]} intensity={2} color="#10b981" />
+        <pointLight position={[-10, -10, -10]} intensity={1.2} color="#059669" />
+        <pointLight position={[0, 10, 5]} intensity={1.5} color="#34d399" />
+        <spotLight position={[0, 15, 0]} intensity={1.8} color="#6ee7b7" angle={0.6} penumbra={1} />
+
         <Environment preset="night" />
-        
-        <AIScene />
-        
-        <OrbitControls 
-          enablePan={false} 
-          enableZoom={false} 
-          maxPolarAngle={Math.PI / 2}
-          minPolarAngle={Math.PI / 2}
+
+        <FlowingScene />
+
+        <OrbitControls
+          enablePan={false}
+          enableZoom={false}
           autoRotate={true}
-          autoRotateSpeed={0.3}
+          autoRotateSpeed={0.5}
+          maxPolarAngle={Math.PI / 1.8}
+          minPolarAngle={Math.PI / 2.5}
         />
       </Canvas>
-      
-      {/* Overlay gradient for better text readability */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/30 to-background/60 pointer-events-none" />
+
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/20 to-background/70 pointer-events-none" />
     </div>
   );
 }

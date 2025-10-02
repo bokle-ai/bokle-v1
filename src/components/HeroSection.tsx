@@ -5,158 +5,110 @@ import Hero3D from './Hero3D';
 export default function HeroSection() {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-20">
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-hero" />
-      
-      {/* 3D Background */}
-      <div className="absolute inset-0 opacity-40">
+      {/* Background gradient with green flow */}
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-emerald-950/20 to-background" />
+
+      {/* 3D Background with increased visibility */}
+      <div className="absolute inset-0 opacity-70">
         <Hero3D />
       </div>
-      
-      {/* Grid overlay */}
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(21,98,27,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(21,98,27,0.03)_1px,transparent_1px)] bg-[size:50px_50px]" />
+
+      {/* Subtle grid overlay */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(16,185,129,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(16,185,129,0.02)_1px,transparent_1px)] bg-[size:60px_60px]" />
       
       {/* Main content */}
       <div className="relative z-10 container mx-auto px-6">
         <div className="max-w-7xl mx-auto">
           {/* Main headline */}
           <div className="text-center mb-16 glide-in" style={{ animationDelay: '0.2s' }}>
-            <div className="inline-block px-4 py-2 rounded-full glass-card border border-primary/20 mb-6">
-              <span className="text-sm text-primary-glow font-semibold">🚀 AI-Powered Business Intelligence</span>
+            <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full backdrop-blur-xl bg-gradient-to-r from-emerald-500/10 to-green-500/10 border border-emerald-500/30 shadow-[0_0_30px_rgba(16,185,129,0.15)] mb-8">
+              <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="text-sm text-emerald-400 font-semibold tracking-wide">AI-Powered Intelligence Platform</span>
             </div>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6">
-              <span className="glow-text block mb-2">Transform Business</span>
-              <span className="text-foreground">with Premium AI</span>
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-tight">
+              <span className="bg-gradient-to-r from-emerald-400 via-green-400 to-emerald-500 bg-clip-text text-transparent block mb-3 drop-shadow-[0_0_50px_rgba(16,185,129,0.5)]">Smarter AI Solutions,</span>
+              <span className="text-foreground">Stronger Results</span>
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
-              Deploy powerful AI agents that glide effortlessly through your business challenges
+            <p className="text-lg md:text-2xl text-muted-foreground/90 max-w-3xl mx-auto mb-12 leading-relaxed">
+              Transform your business with intelligent AI solutions that drive growth and innovation
             </p>
             
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
-              <Button variant="hero" size="lg" className="text-lg px-8 py-6 h-auto">
-                Explore Solutions
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-20">
+              <Button
+                size="lg"
+                className="text-lg px-10 py-7 h-auto bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-400 hover:to-green-500 text-white font-semibold shadow-[0_0_40px_rgba(16,185,129,0.4)] hover:shadow-[0_0_60px_rgba(16,185,129,0.6)] transition-all duration-300 rounded-xl group"
+              >
+                Get Started Today
+                <span className="ml-2 group-hover:translate-x-1 transition-transform duration-300">→</span>
               </Button>
-              <Button variant="premium" size="lg" className="text-lg px-8 py-6 h-auto">
-                Schedule Demo
+              <Button
+                variant="outline"
+                size="lg"
+                className="text-lg px-10 py-7 h-auto border-2 border-emerald-500/50 text-foreground hover:bg-emerald-500/10 hover:border-emerald-400 backdrop-blur-xl transition-all duration-300 rounded-xl"
+              >
+                Watch Demo
               </Button>
             </div>
           </div>
 
-          {/* Dashboard-style metrics grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 glide-in" style={{ animationDelay: '0.4s' }}>
-            {/* AI Efficiency Card */}
-            <div className="glass-card-premium p-8 relative overflow-hidden glide-hover group">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="relative z-10">
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-sm text-muted-foreground font-semibold uppercase tracking-wider">AI Efficiency</span>
-                  <div className="w-2 h-2 rounded-full bg-primary-glow animate-pulse" />
-                </div>
-                <div className="mb-4">
-                  <div className="text-5xl font-bold glow-text mb-2">10.15%</div>
-                  <div className="text-sm text-muted-foreground">Productivity increase</div>
-                </div>
-                <div className="h-16 flex items-end gap-1">
-                  {[40, 60, 45, 70, 55, 80, 65, 90, 75, 95].map((height, i) => (
-                    <div 
-                      key={i} 
-                      className="flex-1 bg-gradient-to-t from-primary to-primary-glow rounded-t opacity-70"
-                      style={{ height: `${height}%` }}
-                    />
-                  ))}
-                </div>
+          {/* Feature badges */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto glide-in" style={{ animationDelay: '0.4s' }}>
+            <div className="backdrop-blur-xl bg-gradient-to-br from-emerald-500/5 to-green-500/5 border border-emerald-500/20 rounded-2xl p-6 hover:border-emerald-400/40 transition-all duration-300 hover:shadow-[0_0_30px_rgba(16,185,129,0.2)]">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-3 h-3 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(16,185,129,0.8)]" />
+                <span className="text-xs text-emerald-400 font-semibold uppercase tracking-wider">Real-Time</span>
               </div>
+              <h3 className="text-foreground font-bold text-lg mb-1">Budget Tracking</h3>
+              <p className="text-muted-foreground text-sm">Monitor spending in real-time</p>
             </div>
 
-            {/* Active Solutions Card */}
-            <div className="glass-card-premium p-8 relative overflow-hidden glide-hover group">
-              <div className="absolute inset-0 bg-gradient-to-br from-accent/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="relative z-10">
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-sm text-muted-foreground font-semibold uppercase tracking-wider">Active Solutions</span>
-                  <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-                </div>
-                <div className="mb-6">
-                  <div className="text-5xl font-bold text-foreground mb-2">50+</div>
-                  <div className="text-sm text-muted-foreground">AI Agents Available</div>
-                </div>
-                <div className="space-y-2">
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-muted-foreground">Sales Automation</span>
-                    <span className="text-primary-glow font-semibold">Active</span>
-                  </div>
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-muted-foreground">E-commerce Intelligence</span>
-                    <span className="text-primary-glow font-semibold">Active</span>
-                  </div>
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-muted-foreground">Customer Support</span>
-                    <span className="text-primary-glow font-semibold">Active</span>
-                  </div>
-                </div>
+            <div className="backdrop-blur-xl bg-gradient-to-br from-emerald-500/5 to-green-500/5 border border-emerald-500/20 rounded-2xl p-6 hover:border-emerald-400/40 transition-all duration-300 hover:shadow-[0_0_30px_rgba(16,185,129,0.2)]">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-3 h-3 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(16,185,129,0.8)]" />
+                <span className="text-xs text-emerald-400 font-semibold uppercase tracking-wider">Teams</span>
               </div>
+              <h3 className="text-foreground font-bold text-lg mb-1">Collaboration</h3>
+              <p className="text-muted-foreground text-sm">Work together seamlessly</p>
             </div>
 
-            {/* Deployment Speed Card */}
-            <div className="glass-card-premium p-8 relative overflow-hidden glide-hover group md:col-span-2 lg:col-span-1">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary-glow/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="relative z-10">
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-sm text-muted-foreground font-semibold uppercase tracking-wider">Deployment</span>
-                  <div className="w-2 h-2 rounded-full bg-primary-glow animate-pulse" />
-                </div>
-                <div className="mb-4">
-                  <div className="text-5xl font-bold glow-text mb-2">59.8K</div>
-                  <div className="text-sm text-muted-foreground">Faster than traditional methods</div>
-                </div>
-                <div className="relative h-20 mt-6">
-                  <svg className="w-full h-full" viewBox="0 0 200 60">
-                    <defs>
-                      <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                        <stop offset="0%" stopColor="hsl(126, 65%, 23%)" stopOpacity="0.8" />
-                        <stop offset="100%" stopColor="hsl(126, 100%, 50%)" stopOpacity="0.3" />
-                      </linearGradient>
-                    </defs>
-                    <path
-                      d="M 0 50 Q 50 20, 100 30 T 200 10"
-                      fill="none"
-                      stroke="url(#gradient)"
-                      strokeWidth="2"
-                      className="animate-pulse"
-                    />
-                    <path
-                      d="M 0 50 Q 50 20, 100 30 T 200 10 L 200 60 L 0 60 Z"
-                      fill="url(#gradient)"
-                      opacity="0.2"
-                    />
-                  </svg>
-                </div>
+            <div className="backdrop-blur-xl bg-gradient-to-br from-emerald-500/5 to-green-500/5 border border-emerald-500/20 rounded-2xl p-6 hover:border-emerald-400/40 transition-all duration-300 hover:shadow-[0_0_30px_rgba(16,185,129,0.2)]">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-3 h-3 rounded-full bg-emerald-400 shadow-[0_0_10px_rgba(16,185,129,0.8)]" />
+                <span className="text-xs text-emerald-400 font-semibold uppercase tracking-wider">Secure</span>
               </div>
+              <h3 className="text-foreground font-bold text-lg mb-1">Cloud Access</h3>
+              <p className="text-muted-foreground text-sm">Access anywhere, anytime</p>
             </div>
           </div>
 
-          {/* Trust badges */}
-          <div className="mt-16 text-center glide-in" style={{ animationDelay: '0.6s' }}>
-            <p className="text-sm text-muted-foreground mb-6">Trusted by leading businesses worldwide</p>
-            <div className="flex flex-wrap justify-center items-center gap-8 opacity-50">
-              <div className="text-2xl font-bold">99%</div>
-              <div className="text-sm">Client Satisfaction</div>
-              <div className="w-px h-8 bg-border" />
-              <div className="text-2xl font-bold">24/7</div>
-              <div className="text-sm">Support Available</div>
-              <div className="w-px h-8 bg-border" />
-              <div className="text-2xl font-bold">10x</div>
-              <div className="text-sm">Faster Deployment</div>
+          {/* Trust indicators */}
+          <div className="mt-20 text-center glide-in" style={{ animationDelay: '0.6s' }}>
+            <p className="text-sm text-emerald-400/80 mb-8 uppercase tracking-widest font-semibold">Trusted by innovative teams worldwide</p>
+            <div className="flex flex-wrap justify-center items-center gap-12 text-muted-foreground/60">
+              <div className="flex flex-col items-center">
+                <div className="text-3xl font-bold text-emerald-400 mb-1">10x</div>
+                <div className="text-xs uppercase tracking-wider">Faster Workflows</div>
+              </div>
+              <div className="w-px h-12 bg-emerald-500/20" />
+              <div className="flex flex-col items-center">
+                <div className="text-3xl font-bold text-emerald-400 mb-1">24/7</div>
+                <div className="text-xs uppercase tracking-wider">AI Support</div>
+              </div>
+              <div className="w-px h-12 bg-emerald-500/20" />
+              <div className="flex flex-col items-center">
+                <div className="text-3xl font-bold text-emerald-400 mb-1">99%</div>
+                <div className="text-xs uppercase tracking-wider">Satisfaction</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      
+
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-accent/50 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-accent rounded-full mt-2 animate-pulse" />
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-20">
+        <div className="w-6 h-10 border-2 border-emerald-500/50 rounded-full flex justify-center shadow-[0_0_20px_rgba(16,185,129,0.3)]">
+          <div className="w-1 h-3 bg-emerald-400 rounded-full mt-2 animate-pulse" />
         </div>
       </div>
     </section>
