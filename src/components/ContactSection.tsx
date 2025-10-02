@@ -105,7 +105,7 @@ export default function ContactSection() {
   ];
 
   return (
-    <section id="contact" className="relative py-24 overflow-hidden">
+    <section id="contact" className="relative py-20 overflow-hidden scroll-mt-20">
       {/* Background elements */}
       <div className="absolute inset-0 bg-gradient-to-t from-background via-background/95 to-background" />
       <div className="absolute top-1/2 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />

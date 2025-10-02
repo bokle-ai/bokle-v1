@@ -4,7 +4,7 @@ import Hero3D from './Hero3D';
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-20">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden py-20 scroll-mt-20">
       {/* Background gradient with green flow */}
       <div className="absolute inset-0 bg-gradient-to-br from-background via-accent-muted/20 to-background" />
 
