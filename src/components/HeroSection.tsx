@@ -33,22 +33,18 @@ export default function HeroSection() {
               Transform your business with intelligent AI solutions that drive growth and innovation
             </p>
             
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-20">
-              <Button
-                size="lg"
-                className="text-lg px-10 py-7 h-auto bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary-glow text-white font-semibold shadow-[0_0_40px_hsl(126_65%_35%_/_0.4)] hover:shadow-[0_0_60px_hsl(126_65%_35%_/_0.6)] transition-all duration-300 rounded-xl group"
-              >
-                Get Started Today
-                <span className="ml-2 group-hover:translate-x-1 transition-transform duration-300">→</span>
-              </Button>
-              <Button
-                variant="outline"
-                size="lg"
-                className="text-lg px-10 py-7 h-auto border-2 border-accent/50 text-foreground hover:bg-accent/10 hover:border-accent backdrop-blur-xl transition-all duration-300 rounded-xl"
-              >
-                Watch Demo
-              </Button>
+            {/* CTA Button */}
+            <div className="flex justify-center items-center mb-20">
+              <a href="#contact">
+                <Button
+                  size="lg"
+                  className="text-lg px-10 py-7 h-auto bg-gradient-to-r from-primary to-accent hover:from-accent hover:to-primary-glow text-white font-semibold shadow-[0_0_40px_hsl(126_65%_35%_/_0.4)] hover:shadow-[0_0_60px_hsl(126_65%_35%_/_0.6)] transition-all duration-300 rounded-xl group"
+                  data-testid="button-contact"
+                >
+                  Contact Us
+                  <span className="ml-2 group-hover:translate-x-1 transition-transform duration-300">→</span>
+                </Button>
+              </a>
             </div>
           </div>
 

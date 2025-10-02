@@ -154,6 +154,7 @@ export default function Hero3D() {
         camera={{ position: [0, 0, 12], fov: 45 }}
         className="w-full h-full"
         gl={{ antialias: true, alpha: true }}
+        style={{ cursor: 'pointer' }}
       >
         <ambientLight intensity={0.4} />
         <pointLight position={[10, 10, 10]} intensity={2} color="#2D8C34" />
@@ -172,6 +173,8 @@ export default function Hero3D() {
           autoRotateSpeed={0.5}
           maxPolarAngle={Math.PI / 1.8}
           minPolarAngle={Math.PI / 2.5}
+          enableDamping={false}
+          makeDefault
         />
       </Canvas>
 
